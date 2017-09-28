@@ -1,0 +1,57 @@
+.loginContainer {
+  background: #00BCD4;
+  min-height:100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  input {
+    width:100%;
+    padding: 8px;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 8px;
+    background: #3F51B5;
+    color: white;
+    border:none;
+    margin-top: 10px;
+  }
+}
+
+.formContainer {
+  width:100%;
+  background: #fff;
+  padding:40px 20px;
+  box-shadow: 0 2px 8px 0 #d9d9d9;
+}
+
+.formContainer p {
+  text-align: center;
+}
+
+.mainTitle {
+  font-size: 22px;
+  margin:5px;
+}
+
+.underTitle {
+  font-size: 18px;
+  margin-top:20px;
+
+}
+
+.notice {
+  margin:15px 0;
+  text-align: center;
+}
+
+.text-field, .password-field {
+  margin-top: 10px;
+}
+
+.wrapper-20 {
+  padding:20px;
+}

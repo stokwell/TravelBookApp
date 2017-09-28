@@ -1,0 +1,8 @@
+<div class="header">
+  <% if !current_page?('/') %>
+    <%= link_to 'HOME', root_path %>
+  <% else %>
+    <div></div>
+  <% end %>
+  <%= button_to 'Sign out', sign_out_path, method: :delete,  class: 'float-right' %>
+</div>

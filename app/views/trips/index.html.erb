@@ -1,0 +1,23 @@
+<%= render 'layouts/navigation' %>
+
+<div class="wrapper-20">
+
+  <%= link_to ({controller: "trips", action: "last_trips"}) do %>
+    <div class="card">
+      Letzte 10 Reiseabrechnungen
+    </div>
+  <% end %>
+
+  <%= link_to ({controller: "trips", action: "months"}) do %>
+    <div class="card">
+      Monatliche Übersichten
+    </div>
+  <% end %>
+
+  <%= link_to new_trip_path, class: "new-trip-link" do %>
+    <div class="card">
+      Neue Reiseabrechnung
+    </div>
+  <% end %>
+
+</div>

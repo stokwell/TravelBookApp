@@ -1,0 +1,7 @@
+= render 'layouts/navigation'
+
+.wrapper-20
+  - @months.each do |month|
+    =link_to  do
+      .card
+        =month

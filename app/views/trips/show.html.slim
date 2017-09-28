@@ -1,0 +1,16 @@
+= render 'layouts/navigation'
+
+.wrapper-20
+  .card
+    p class="center" =@trip.trip_start.strftime('%d %B %Y %H:%M')
+    p class="center" =@trip.trip_end.strftime('%d %B %Y %H:%M')
+
+    p class="card-title mr-10" =@trip.trip_reason
+    p class="center"
+      =@trip.trip_arrival
+      span -
+      =@trip.trip_departure
+
+
+
+p =@billing.catering_costs

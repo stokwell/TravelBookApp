@@ -1,0 +1,7 @@
+= render 'layouts/navigation'
+
+.wrapper-20
+  - @trips.each do |a|
+    =link_to trip_path(a) do
+      .card
+        =a.trip_reason

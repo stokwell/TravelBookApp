@@ -1,0 +1,63 @@
+= render 'layouts/navigation'
+
+.wrapper-20
+
+
+  = form_for @trip do |form|
+    .card
+      p class="form-group-title" Allgemeine Information
+      .form-group
+        =form.label :trip_reason, 'Reisegrund'
+        =form.text_field :trip_reason, placeholder: 'z.B. Firma Weber Gmbh Besuch'
+
+      .form-group
+        =form.label :trip_arrival, 'Start-Ort'
+        =form.text_field :trip_arrival, placeholder: 'z.B. Berlin'
+
+      .form-group
+        =form.label :trip_departure, 'Ziel-Ort'
+        =form.text_field :trip_departure, placeholder: 'z.B. Hamburg'
+
+      .form-group
+        =form.label :distance, 'Zurückgelegte Kilometer'
+        =form.text_field :distance, placeholder: '200'
+
+      .form-group
+        = form.label :trip_start, 'Start-Zeit'
+        = form.datetime_local_field :trip_start
+
+      .form-group
+        = form.label :trip_end, 'Ende-Zeit'
+        = form.datetime_local_field :trip_end
+
+    .card
+      p class="form-group-title" Pauschale Abrechnungen
+      .form-group
+        =form.label :night_count, 'Anzahl pauschal abzurechnender Übernachtungen'
+        =form.text_field :night_count, placeholder: '0'
+
+      .form-group
+        =form.label :breakfast_count, 'Anzahl erhaltener Früstücke'
+        =form.text_field :breakfast_count, placeholder: '0'
+
+      .form-group
+        =form.label :lunch_count, 'Anzahl erhaltener Mittagessen'
+        =form.text_field :lunch_count, placeholder: '0'
+
+      .form-group
+        =form.label :dinner_count, 'Anzahl erhaltener Abendessen'
+        =form.text_field :dinner_count, placeholder: '0'
+
+    .card
+      p class="form-group-title" Sonstiges
+      .form-group
+        =form.label :outlay, 'Auslagen des Mitarbeiters (Bruttobetrag in Euro)'
+        =form.text_field :outlay, placeholder: '0'
+
+      .form-group
+        =form.label :notice, 'Notizen (optional vom Mitarbeiter auszufüllen)'
+        =form.text_area :notice
+
+
+    .form-group
+      =form.submit 'Reiseabrechnung speichern'
