@@ -2,15 +2,112 @@
 
 .wrapper-20
   .card
+    p class="card-title mr-10" =@trip.trip_reason
     p class="center" =@trip.trip_start.strftime('%d %B %Y %H:%M')
     p class="center" =@trip.trip_end.strftime('%d %B %Y %H:%M')
-
-    p class="card-title mr-10" =@trip.trip_reason
     p class="center"
       =@trip.trip_arrival
       span -
       =@trip.trip_departure
 
+    p class="form-billing-title" Verpflegungsmehraufwände
+    table style="width:100%; padding-bottom:10px;"
+      tr
+        td Anzahl der ganzen Tagen:
+        td =@billing.whole_days_count
+      tr
+        td Pauschalbetrag pro Tag:
+        td
+          |
+          span =@billing.addition_for_whole_day
+          span &#8364
+
+      table style="width:100%; padding-bottom:10px; border-bottom: 1px solid grey"
+        tr
+          td Anzahl der Ab- und <br> Anreise- Tagen:
+          td =@billing.half_days_count
+        tr
+          td Pauschalbetrag pro Tag:
+          td
+            |
+            span =@billing.addition_for_half_day
+            span &#8364
+    p
+      | Insgesamt:
+      span =@billing.catering_costs
+      span &#8364
+
+    p class="form-billing-title" Übernachtungspauschale
+    table style="width:100%; padding-bottom:10px; border-bottom: 1px solid grey"
+      tr
+        td Anzahl der Übernachtungen:
+        td =@billing.night_count
+      tr
+        td Pauschalbetrag:
+        td
+          |
+          =@billing.addition_for_night
+          span &#8364
+    p
+      | Insgesamt:
+      span =@billing.accommodations_per_diems
+      span &#8364
 
 
-p =@billing.catering_costs
+    p class="form-billing-title" Erhaltene Mahlzeiten
+    table style="width:100%; margin-bottom:10px"
+      tr
+        td Anzahl erhaltener Frühstücke:
+        td =@billing.breakfast_count
+      tr
+        td Abzug pro Frühstück:
+        td
+          | 4.80
+          span &#8364
+
+    table style="width:100%; margin-bottom:10px; "
+      tr
+        td Anzahl erhaltener Mittagessen:
+        td =@billing.lunch_count
+      tr
+        td Abzug pro Mittagessen:
+        td
+          | 9.60
+          span &#8364
+
+    table style="width:100%; padding-bottom:10px; border-bottom: 1px solid grey"
+      tr
+        td Anzahl erhaltener Abendessen:
+        td =@billing.dinner_count
+      tr
+        td Abzug pro Abendessen:
+        td
+          | 9.60
+          span &#8364
+    p
+      | Insgesamt:
+      span =@billing.catering_costs_reduction
+      span &#8364
+
+
+    p class="form-billing-title" Reiseabrechnung
+    table style="width:100%; padding-bottom:10px; border-bottom: 1px solid grey"
+      tr
+        td Verpflegungsmehraufwände:
+        td =@billing.catering_costs
+      tr
+        td Erhaltende Mahlzeiten:
+        td
+          span -
+          span =@billing.catering_costs_reduction
+          span &#8364
+      tr
+        td Übernachtungspauschale:
+        td
+          span =@billing.accommodations_per_diems
+          span &#8364
+
+    p
+      | Gesamt:
+      span =@billing.result
+      span &#8364

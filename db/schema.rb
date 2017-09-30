@@ -10,13 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170928142401) do
+ActiveRecord::Schema.define(version: 20170929091313) do
 
   create_table "billings", force: :cascade do |t|
     t.integer "trip_id"
     t.integer "catering_costs"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "whole_days_count"
+    t.integer "half_days_count"
+    t.integer "night_count"
+    t.integer "addition_for_night"
+    t.integer "accommodations_per_diems"
+    t.integer "addition_for_half_day"
+    t.integer "addition_for_whole_day"
+    t.integer "catering_costs_reduction"
+    t.integer "breakfast_count"
+    t.integer "lunch_count"
+    t.integer "dinner_count"
+    t.integer "breakfast_reduction"
+    t.integer "lunch_reduction"
+    t.integer "dinner_reduction"
+    t.integer "result"
     t.index ["trip_id"], name: "index_billings_on_trip_id"
   end
 
