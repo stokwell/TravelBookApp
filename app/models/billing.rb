@@ -8,7 +8,7 @@ class Billing < ApplicationRecord
   DINNER_REDUCTION = ADDITION_FOR_WHOLE_DAY * 0.2
   belongs_to :trip
 
-  def create_billing
+  def create_billing_for_trip
     create(
       whole_days_count: full_payed_days_count,
       half_days_count: half_payed_days_count,
