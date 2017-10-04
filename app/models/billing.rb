@@ -8,18 +8,18 @@ class Billing < ApplicationRecord
   DINNER_REDUCTION = ADDITION_FOR_WHOLE_DAY * 0.2
   belongs_to :trip
 
-  def create_billing_for_trip
-    create(
+  def billing_for_trip
+     update_attributes(
       whole_days_count: full_payed_days_count,
       half_days_count: half_payed_days_count,
 
-      night_count: night_count,
+      night_count: trip.night_count,
       addition_for_night: ADDITION_FOR_NIGHT,
       accommodations_per_diems: accommodations_per_diems,
 
-      breakfast_count: breakfast_count,
-      lunch_count: lunch_count,
-      dinner_count: dinner_count,
+      breakfast_count: trip.breakfast_count,
+      lunch_count: trip.lunch_count,
+      dinner_count: trip.dinner_count,
 
       breakfast_reduction: BREAKFAST_REDUCTION,
       lunch_reduction: LUNCH_REDUCTION,
@@ -35,30 +35,28 @@ class Billing < ApplicationRecord
     )
   end
 
-  private
-
   def accommodations_per_diems
-    night_count * ADDITION_FOR_NIGHT
+    trip.night_count * ADDITION_FOR_NIGHT
   end
 
   def calculate_catering_costs
-    trip_start.to_date == trip_end.to_date ? calculate_costs_for_half_day_or_nothing : calculate_costs_for_many_days_trip
+    trip.trip_start.to_date == trip.trip_end.to_date ? calculate_costs_for_half_day_or_nothing : calculate_costs_for_many_days_trip
   end
 
   def calculate_costs_for_half_day_or_nothing
-    trip_end.hour - trip_start.hour > 8 ? ADDITION_FOR_HALF_DAY : 0
+    trip.trip_end.hour - trip.trip_start.hour > 8 ? ADDITION_FOR_HALF_DAY : 0
   end
 
   def full_payed_days_count
-    full_payed_days = (trip_start.to_date...trip_end.to_date).to_a.tap { |arr| arr.delete(trip_start.to_date) }.count
+    full_payed_days = (trip.trip_start.to_date...trip.trip_end.to_date).to_a.tap { |arr| arr.delete(trip.trip_start.to_date) }.count
   end
 
   def half_payed_days_count_for_one_day_trip
-    trip_start == trip_end && trip_end.hour - trip_start.hour > 8 ? 1 : 0
+    trip.trip_start == trip.trip_end && trip.trip_end.hour - trip.trip_start.hour > 8 ? 1 : 0
   end
 
   def half_payed_days_count
-    trip_start.to_date == trip_end.to_date ? half_payed_days_count_for_one_day_trip : 2
+    trip.trip_start.to_date == trip.trip_end.to_date ? half_payed_days_count_for_one_day_trip : 2
   end
 
   def calculate_costs_for_many_days_trip
@@ -66,7 +64,7 @@ class Billing < ApplicationRecord
   end
 
   def catering_costs_reduction
-    breakfast_count * BREAKFAST_REDUCTION + lunch_count * LUNCH_REDUCTION + dinner_count * DINNER_REDUCTION
+    trip.breakfast_count * BREAKFAST_REDUCTION + trip.lunch_count * LUNCH_REDUCTION + trip.dinner_count * DINNER_REDUCTION
   end
 
   def result
