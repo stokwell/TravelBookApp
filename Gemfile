@@ -35,6 +35,7 @@ gem 'pry-byebug'
 
 group :test do
   gem "minitest-rails"
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 
