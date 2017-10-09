@@ -25,7 +25,6 @@ class Billing < ApplicationRecord
       lunch_reduction: LUNCH_REDUCTION,
       dinner_reduction: DINNER_REDUCTION,
 
-      addition_for_night: ADDITION_FOR_NIGHT,
       addition_for_half_day: ADDITION_FOR_HALF_DAY,
       addition_for_whole_day: ADDITION_FOR_WHOLE_DAY,
 

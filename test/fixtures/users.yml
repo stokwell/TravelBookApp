@@ -1,0 +1,4 @@
+valid:
+  email: john@sample.com
+  encrypted_password: <%= BCrypt::Password.create("foobar", cost: 4) %>
+  remember_token: <%= Clearance::Token.new %>

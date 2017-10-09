@@ -1,7 +1,7 @@
 class Trip < ApplicationRecord
   belongs_to :user
   has_one :billing, dependent: :destroy
-  validates_presence_of :trip_reason, :trip_start, :trip_end
+  validates :trip_reason, :trip_start, :trip_end, presence: true
 
   after_create :billing_trip
 

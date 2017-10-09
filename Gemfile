@@ -33,6 +33,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'slim'
 gem 'pry-byebug'
 
+group :test do
+  gem "minitest-rails"
+end
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
